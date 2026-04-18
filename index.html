@@ -1,150 +1,207 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中西非公司安全生产委员会 - 官方网站</title>
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
-        :root{--main:#003366;--red:#c0392b;--light:#f5f7fa;--dark:#222;--gray:#666}
-        body{background:#f5f7fa;color:#333;line-height:1.8}
-        a{text-decoration:none;color:inherit}
-        ul{list-style:none}
-        .container{width:94%;max-width:1200px;margin:0 auto}
-
-        /* 顶部 */
-        .top-bar{background:var(--main);color:#fff;padding:6px 0;font-size:14px}
-        .top-bar .container{display:flex;justify-content:space-between}
-
-        /* 头部 */
-        .header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:999}
-        .logo-box{display:flex;align-items:center;padding:18px 0;gap:20px}
-        .logo{height:55px}
-        .logo-text{font-size:24px;font-weight:700;color:var(--main)}
-
-        /* 导航 */
-        .nav{background:var(--main)}
-        .nav ul{display:flex}
-        .nav li{padding:15px 24px;color:#fff;font-weight:500}
-        .nav li.active,.nav li:hover{background:#002244}
-
-        /* banner */
-        .banner{height:420px;background:linear-gradient(rgba(0,40,80,0.85),rgba(0,40,80,0.85)),url(https://picsum.photos/id/1076/1920/1080);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center}
-        .banner h1{font-size:38px;margin-bottom:15px}
-        .banner p{font-size:18px;max-width:800px}
-
-        /* 标题 */
-        .title{font-size:22px;font-weight:700;color:var(--main);padding-bottom:10px;border-bottom:3px solid var(--red);margin:40px 0 20px;display:flex;justify-content:space-between;align-items:center}
-        .more{font-size:14px;color:#555}
-
-        /* 卡片 */
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;margin-bottom:30px}
-        .card{background:#fff;padding:25px 20px;border-radius:8px;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,0.05)}
-        .card i{font-size:34px;color:var(--main);margin-bottom:12px}
-        .card h3{font-size:16px}
-
-        /* 新闻 */
-        .news{background:#fff;padding:25px;border-radius:8px}
-        .news li{padding:12px 0;border-bottom:1px dashed #eee;display:flex;justify-content:space-between}
-        .news li:last-child{border-bottom:0}
-        .news .date{color:#999;font-size:13px}
-
-        /* 部门 */
-        .dept{background:#fff;padding:25px;border-radius:8px}
-        .dept h3{color:var(--main);margin-bottom:10px}
-        .dept p{margin-bottom:8px}
-
-        /* 文件上传下载 */
-        .file{background:#fff;padding:25px;border-radius:8px}
-        .upload{border:2px dashed #ddd;padding:30px;text-align:center;border-radius:8px;margin-bottom:20px}
-        .file-list li{padding:10px 0;display:flex;justify-content:space-between;border-bottom:1px dashed #eee}
-        .down{color:var(--main);cursor:pointer}
-
-        /* 表单 */
-        .form{background:#fff;padding:25px;border-radius:8px}
-        .form-item{margin-bottom:15px}
-        .form-item label{display:block;margin-bottom:5px;font-weight:500}
-        .form-item input,.form-item textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:4px}
-        .btn{background:var(--main);color:#fff;border:none;padding:10px 25px;border-radius:4px;cursor:pointer}
-
-        /* 底部 */
-        .footer{background:#1a1a1a;color:#ccc;padding:40px 0 20px;margin-top:50px}
-        .footer-bottom{text-align:center;padding-top:20px;border-top:1px solid #333}
-
-        @media(max-width:768px){
-            .nav ul{flex-wrap:wrap}
-            .banner{height:300px}
-            .banner h1{font-size:26px}
-            .grid{grid-template-columns:repeat(2,1fr)}
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中西非公司安全生产委员会</title>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+body{background:#f5f7fa;color:#333}
+.container{width:92%;max-width:1200px;margin:0 auto}
+.top-bar{background:#0056b3;color:#fff;padding:8px 0;font-size:14px}
+.top-bar .container{display:flex;justify-content:space-between}
+.header{background:#fff;padding:18px 0;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+.logo-area{display:flex;align-items:center;gap:15px}
+.logo{width:60px;height:60px;background:#eee;border-radius:5px}
+.site-title{font-size:24px;font-weight:bold;color:#0056b3}
+.nav{background:#0056b3}
+.nav-list{display:flex;list-style:none}
+.nav-item{padding:15px 22px;color:#fff;cursor:pointer}
+.nav-item.active{background:#c93737}
+.nav-item:hover{background:#004494}
+.banner{height:420px;background:url(https://picsum.photos/1920/420) center/cover;position:relative;display:flex;align-items:center;color:#fff}
+.banner::before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,30,80,0.5)}
+.banner .container{position:relative;z-index:1}
+.banner-title{font-size:36px;margin-bottom:15px}
+.banner-desc{font-size:18px;max-width:700px}
+.section{padding:40px 0}
+.section-title{font-size:22px;margin-bottom:20px;padding-bottom:10px;border-bottom:3px solid #c93737;color:#0056b3;display:flex;justify-content:space-between;align-items:center}
+.btn{background:#0056b3;color:#fff;border:none;padding:8px 16px;border-radius:4px;cursor:pointer;font-size:14px}
+.btn:hover{background:#004494}
+.file-list{background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.file-item{padding:12px;border-bottom:1px dashed #eee;display:flex;justify-content:space-between;align-items:center}
+.file-item:last-child{border-bottom:none}
+.file-name{flex:1}
+.file-meta{font-size:12px;color:#666;margin-left:10px}
+.download-btn{background:#28a745;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer}
+.del-btn{background:#dc3545;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;margin-left:6px}
+.modal{display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;justify-content:center;align-items:center}
+.modal-content{background:#fff;width:90%;max-width:600px;padding:30px;border-radius:10px;position:relative}
+.close{position:absolute;right:20px;top:15px;font-size:22px;cursor:pointer;color:#666}
+.form-item{margin-bottom:18px}
+.form-item label{display:block;margin-bottom:6px;font-weight:bold}
+.form-item input,.form-item textarea,.form-item select{width:100%;padding:10px;border:1px solid #ddd;border-radius:4px}
+.login-box{max-width:400px;margin:60px auto;background:#fff;padding:30px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.admin-bar{background:#343a40;color:#fff;padding:10px 0;font-size:14px}
+.admin-bar .container{display:flex;justify-content:space-between;align-items:center}
+.tab{display:flex;gap:10px;margin-bottom:20px}
+.tab button{padding:8px 16px;border:none;background:#eee;border-radius:4px;cursor:pointer}
+.tab button.active{background:#0056b3;color:#fff}
+.empty{text-align:center;padding:40px;color:#999}
+@media(max-width:768px){
+.banner{height:300px}
+.banner-title{font-size:26px}
+.nav-list{flex-wrap:wrap}
+.nav-item{padding:12px 15px}
+}
+</style>
 </head>
 <body>
 
-<div class="top-bar"><div class="container"><span>中西非公司安全生产委员会</span><span>安全第一 预防为主 综合治理</span></div></div>
-<div class="header"><div class="container"><div class="logo-box"><img src="https://picsum.photos/id/60/200/200" class="logo"><div class="logo-text">中西非公司安全生产委员会</div></div></div></div>
-<div class="nav"><div class="container"><ul><li class="active">首页</li><li>部门介绍</li><li>新闻中心</li><li>信息公开</li><li>互动交流</li><li>服务大厅</li><li>专题专栏</li></ul></div></div>
-
-<div class="banner"><div><h1>坚守安全红线 · 筑牢海外防线</h1><p>统筹中西非区域安全生产、监督检查、风险防控、应急管理与文化建设工作</p></div></div>
-
+<div id="frontPage" style="display:block">
+<div class="top-bar">
 <div class="container">
-    <div class="title"><span>核心栏目</span></div>
-    <div class="grid">
-        <div class="card"><i class="fas fa-home"></i><h3>首页</h3></div>
-        <div class="card"><i class="fas fa-sitemap"></i><h3>部门介绍</h3></div>
-        <div class="card"><i class="fas fa-newspaper"></i><h3>新闻中心</h3></div>
-        <div class="card"><i class="fas fa-file-alt"></i><h3>信息公开</h3></div>
-        <div class="card"><i class="fas fa-comments"></i><h3>互动交流</h3></div>
-        <div class="card"><i class="fas fa-cogs"></i><h3>服务大厅</h3></div>
-        <div class="card"><i class="fas fa-bookmark"></i><h3>专题专栏</h3></div>
-    </div>
-
-    <div class="title"><span>安全新闻动态</span><a href="#" class="more">更多 +</a></div>
-    <ul class="news">
-        <li><span>公司召开2026年中西非安全生产工作会议</span><span class="date">2026-01-15</span></li>
-        <li><span>安委会开展海外项目安全隐患专项排查</span><span class="date">2026-01-10</span></li>
-        <li><span>安全生产教育培训在各项目部全面开展</span><span class="date">2025-12-28</span></li>
-        <li><span>海外项目应急演练活动圆满完成</span><span class="date">2025-12-20</span></li>
-    </ul>
-
-    <div class="title"><span>委员会部门介绍</span></div>
-    <div class="dept">
-        <h3>组织架构</h3>
-        <p>主任：公司主要负责人</p>
-        <p>副主任：分管安全副总经理</p>
-        <p>成员：各部门、各项目部负责人</p>
-        <h3 style="margin-top:20px">主要职责</h3>
-        <p>1. 贯彻落实国家及海外项目安全生产法律法规</p>
-        <p>2. 统筹中西非区域安全监督、检查、考核</p>
-        <p>3. 组织应急演练、事故处置、安全文化建设</p>
-        <p>4. 制定安全管理制度、年度计划与整改措施</p>
-    </div>
-
-    <div class="title"><span>文件上传与资料下载</span></div>
-    <div class="file">
-        <div class="upload">
-            <h3>文件上传（安全资料、制度、预案）</h3>
-            <input type="file" multiple style="margin:15px 0">
-            <button class="btn">确认上传</button>
-        </div>
-        <ul class="file-list">
-            <li><span>安全生产管理办法.pdf</span><span class="down">下载</span></li>
-            <li><span>海外项目应急预案.docx</span><span class="down">下载</span></li>
-            <li><span>安全培训课件.pptx</span><span class="down">下载</span></li>
-            <li><span>检查记录表.xlsx</span><span class="down">下载</span></li>
-        </ul>
-    </div>
-
-    <div class="title"><span>互动留言</span></div>
-    <div class="form">
-        <div class="form-item"><label>姓名/部门</label><input type="text" placeholder="请输入"></div>
-        <div class="form-item"><label>联系方式</label><input type="text" placeholder="电话/邮箱"></div>
-        <div class="form-item"><label>留言内容</label><textarea placeholder="投诉举报、建议咨询"></textarea></div>
-        <button class="btn">提交留言</button>
-    </div>
+<div>中西非公司安全生产委员会 官方网站</div>
+<div>安全生产 · 警钟长鸣</div>
+</div>
+</div>
+<div class="header">
+<div class="container">
+<div class="logo-area">
+<div class="logo"></div>
+<div class="site-title">中西非公司安全生产委员会</div>
+</div>
+</div>
+</div>
+<div class="nav">
+<div class="container">
+<ul class="nav-list">
+<li class="nav-item active" onclick="showFront()">首页</li>
+<li class="nav-item" onclick="showFiles()">文件资料</li>
+<li class="nav-item">机构部门</li>
+<li class="nav-item">新闻动态</li>
+<li class="nav-item">信息公开</li>
+<li class="nav-item">互动交流</li>
+<li class="nav-item">政务服务</li>
+</ul>
+</div>
+</div>
+<div class="banner">
+<div class="container">
+<div class="banner-title">安全生产 重于泰山</div>
+<div class="banner-desc">全面落实安全责任，推动安全发展，保障人员生命与财产安全，建设稳定、安全、规范的生产环境。</div>
+</div>
+</div>
+<div class="section" id="fileSection">
+<div class="container">
+<div class="section-title">
+<span>安全文件资料</span>
+<button class="btn" onclick="goAdmin()">管理后台</button>
+</div>
+<div class="file-list" id="frontFileList"></div>
+</div>
+</div>
 </div>
 
-<div class="footer"><div class="container"><div class="footer-bottom"><p>版权所有 © 中西非公司安全生产委员会 | 安全责任 重于泰山</p></div></div></div>
+<div id="loginPage" style="display:none">
+<div class="login-box">
+<h2 style="margin-bottom:20px;text-align:center">管理员登录</h2>
+<div class="form-item">
+<label>账号</label>
+<input type="text" id="adminUser" value="admin">
+</div>
+<div class="form-item">
+<label>密码</label>
+<input type="password" id="adminPwd" value="123456">
+</div>
+<button class="btn" style="width:100%" onclick="adminLogin()">登录</button>
+</div>
+</div>
+
+<div id="adminPage" style="display:none">
+<div class="admin-bar">
+<div class="container">
+<div>管理员后台</div>
+<div>
+<button class="btn" onclick="logout()">退出登录</button>
+<button class="btn" style="margin-left:10px" onclick="showFront()">返回前台</button>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="container">
+<div class="section-title">文件管理中心</div>
+<div class="tab">
+<button class="active" onclick="switchTab('upload')">上传文件</button>
+<button onclick="switchTab('list')">文件列表</button>
+</div>
+<div id="tabUpload">
+<div class="file-list">
+<form id="uploadForm">
+<div class="form-item">
+<label>文件标题</label>
+<input type="text" id="fileTitle" placeholder="请输入文件名称/说明" required>
+</div>
+<div class="form-item">
+<label>选择文件（PPT、视频、PDF、Word、图片等）</label>
+<input type="file" id="fileData" required>
+</div>
+<div class="form-item">
+<label>文件分类</label>
+<select id="fileCate">
+<option value="安全制度">安全制度</option>
+<option value="培训资料">培训资料</option>
+<option value="应急预案">应急预案</option>
+<option value="检查记录">检查记录</option>
+<option value="视频资料">视频资料</option>
+</select>
+</div>
+<button type="submit" class="btn">确认上传</button>
+</form>
+</div>
+</div>
+<div id="tabList" style="display:none">
+<div class="file-list" id="adminFileList"></div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+const ADMIN = {user:'admin',pwd:'123456'}
+function goAdmin(){document.getElementById('frontPage').style.display='none';document.getElementById('loginPage').style.display='block'}
+function adminLogin(){
+let u=document.getElementById('adminUser').value,p=document.getElementById('adminPwd').value
+if(u===ADMIN.user&&p===ADMIN.pwd){localStorage.setItem('admin','1');showAdmin()}else{alert('账号密码错误')}}
+function showAdmin(){document.getElementById('loginPage').style.display='none';document.getElementById('adminPage').style.display='block';switchTab('upload');loadAdmin()}
+function logout(){localStorage.removeItem('admin');showFront()}
+function showFront(){document.getElementById('adminPage').style.display='none';document.getElementById('loginPage').style.display='none';document.getElementById('frontPage').style.display='block';loadFront()}
+function showFiles(){showFront();document.getElementById('fileSection').scrollIntoView()}
+function switchTab(t){
+document.getElementById('tabUpload').style.display=t==='upload'?'block':'none'
+document.getElementById('tabList').style.display=t==='list'?'block':'none'
+document.querySelectorAll('.tab button').forEach((b,i)=>b.classList.toggle('active',i===(t==='upload'?0:1)))}
+function getFiles(){return JSON.parse(localStorage.getItem('files')||'[]')}
+function setFiles(d){localStorage.setItem('files',JSON.stringify(d))}
+document.getElementById('uploadForm').addEventListener('submit',e=>{
+e.preventDefault()
+let t=document.getElementById('fileTitle').value,c=document.getElementById('fileCate').value,f=document.getElementById('fileData').files[0]
+let r=new FileReader();r.onload=()=>{
+let arr=getFiles()
+arr.unshift({id:Date.now(),t,c,n:f.name,s:(f.size/1024/1024).toFixed(2)+'MB',u:r.result,time:new Date().toLocaleString()})
+setFiles(arr);alert('上传成功');document.getElementById('uploadForm').reset();switchTab('list');loadAdmin()}
+r.readAsDataURL(f)})
+function loadAdmin(){
+let d=getFiles(),b=document.getElementById('adminFileList')
+if(d.length===0){b.innerHTML='<div class="empty">暂无文件</div>';return}
+b.innerHTML=d.map(i=>`<div class="file-item"><div><div>${i.t}</div><div class="file-meta">${i.c}｜${i.n}｜${i.s}｜${i.time}</div></div><div><a href="${i.u}" download="${i.n}" class="download-btn">下载</a><button class="del-btn" onclick="del(${i.id})">删除</button></div></div>`).join('')}
+function del(id){if(!confirm('确定删除？'))return;setFiles(getFiles().filter(x=>x.id!==id));loadAdmin();loadFront()}
+function loadFront(){
+let d=getFiles(),b=document.getElementById('frontFileList')
+if(d.length===0){b.innerHTML='<div class="empty">暂无文件资料</div>';return}
+b.innerHTML=d.map(i=>`<div class="file-item"><div><div>${i.t}</div><div class="file-meta">${i.c}｜${i.n}｜${i.s}｜${i.time}</div></div><a href="${i.u}" download="${i.n}" class="download-btn">下载</a></div>`).join('')}
+window.onload=()=>{localStorage.getItem('admin')?showAdmin():showFront();loadFront()}
+</script>
 </body>
 </html>
