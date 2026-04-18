@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中西非公司安全生产委员会 - 官方网站</title>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+    :root {
+      --main: #0052cc;
+      --red: #d93025;
+      --gray: #666;
+      --light: #f5f7fa;
+      --dark: #333;
+    }
+    body {
+      background: #f9f9f9;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    .container {
+      width: 94%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 顶部 */
+    .top {
+      background: var(--main);
+      color: #fff;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .top .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* 头部 */
+    .header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      padding: 14px 0;
+      gap: 16px;
+    }
+    .logo {
+      height: 52px;
+    }
+    .logo-text {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--main);
+    }
+
+    /* 导航 */
+    .nav {
+      background: var(--main);
+    }
+    .nav ul {
+      display: flex;
+    }
+    .nav li {
+      padding: 14px 22px;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .nav li:hover,
+    .nav li.active {
+      background: #004099;
+    }
+
+    /* Banner */
+    .banner {
+      height: 400px;
+      background: linear-gradient(rgba(0,82,204,0.85), rgba(0,82,204,0.85)), url("https://picsum.photos/id/1076/1920/1080");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .banner h1 {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    .banner p {
+      font-size: 18px;
+      max-width: 800px;
+    }
+
+    /* 通用标题 */
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--main);
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--red);
+      margin: 30px 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .more {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    /* 卡片 */
+    .card-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 24px 16px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    .card i {
+      font-size: 32px;
+      color: var(--main);
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 16px;
+    }
+
+    /* 新闻列表 */
+    .news-list {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .news-item {
+      padding: 12px 0;
+      border-bottom: 1px dashed #eee;
+      display: flex;
+      justify-content: space-between;
+    }
+    .news-item:last-child {
+      border-bottom: none;
+    }
+    .news-date {
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    /* 文件上传下载 */
+    .file-box {
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .upload-area {
+      border: 1px dashed #ccc;
+      padding: 30px;
+      text-align: center;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    .upload-area input {
+      margin: 10px 0;
+    }
+    .file-list {
+      border-top: 1px solid #eee;
+      padding-top: 16px;
+    }
+    .file-item {
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed #eee;
+    }
+    .down-btn {
+      color: var(--main);
+      cursor: pointer;
+    }
+
+    /* 表单 */
+    .form-box {
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .form-item {
+      margin-bottom: 16px;
+    }
+    .form-item label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .form-item input,
+    .form-item textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .form-item textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: var(--main);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* 底部 */
+    .footer {
+      background: #222;
+      color: #ccc;
+      padding: 40px 0 20px;
+      margin-top: 40px;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .nav ul {
+        flex-wrap: wrap;
+      }
+      .banner {
+        height: 260px;
+      }
+      .banner h1 {
+        font-size: 24px;
+      }
+      .card-box {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 顶部信息 -->
+<div class="top">
+  <div class="container">
+    <span>中西非公司安全生产委员会</span>
+    <span>安全第一 · 预防为主 · 综合治理</span>
+  </div>
+</div>
+
+<!-- 头部 -->
+<div class="header">
+  <div class="container">
+    <div class="logo-box">
+      <img src="https://picsum.photos/id/60/200/200" alt="LOGO" class="logo">
+      <div class="logo-text">中西非公司安全生产委员会</div>
+    </div>
+  </div>
+</div>
+
+<!-- 导航 -->
+<div class="nav">
+  <div class="container">
+    <ul>
+      <li class="active">首页</li>
+      <li>部门</li>
+      <li>新闻</li>
+      <li>公开</li>
+      <li>互动</li>
+      <li>服务</li>
+      <li>专题</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Banner -->
+<div class="banner">
+  <div>
+    <h1>坚守安全红线 筑牢海外防线</h1>
+    <p>全面统筹中西非区域安全生产、监督检查、应急管理、风险防控与文化建设工作</p>
+  </div>
+</div>
+
+<!-- 主体 -->
+<div class="container">
+  <!-- 栏目入口 -->
+  <div class="title">
+    <span>核心栏目</span>
+  </div>
+  <div class="card-box">
+    <div class="card">
+      <i class="fas fa-home"></i>
+      <h3>首页</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-sitemap"></i>
+      <h3>部门</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-newspaper"></i>
+      <h3>新闻</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-file-alt"></i>
+      <h3>公开</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-comments"></i>
+      <h3>互动</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-cogs"></i>
+      <h3>服务</h3>
+    </div>
+    <div class="card">
+      <i class="fas fa-bookmark"></i>
+      <h3>专题</h3>
+    </div>
+  </div>
+
+  <!-- 新闻动态 -->
+  <div class="title">
+    <span>安全新闻动态</span>
+    <a href="#" class="more">更多 +</a>
+  </div>
+  <div class="news-list">
+    <div class="news-item">
+      <span>公司召开2026年中西非区域安全生产工作会议</span>
+      <span class="news-date">2026-01-12</span>
+    </div>
+    <div class="news-item">
+      <span>安委会开展海外项目安全隐患专项排查整治</span>
+      <span class="news-date">2026-01-08</span>
+    </div>
+    <div class="news-item">
+      <span>安全生产教育培训在各项目部全面开展</span>
+      <span class="news-date">2025-12-25</span>
+    </div>
+    <div class="news-item">
+      <span>公司发布海外项目应急处置管理办法</span>
+      <span class="news-date">2025-12-18</span>
+    </div>
+    <div class="news-item">
+      <span>中西非区域综合应急演练圆满完成</span>
+      <span class="news-date">2025-12-10</span>
+    </div>
+  </div>
+
+  <!-- 文件上传下载模块 -->
+  <div class="title">
+    <span>资料下载与文件上传</span>
+  </div>
+  <div class="file-box">
+    <div class="upload-area">
+      <h3>文件上传</h3>
+      <p>支持上传安全制度、培训课件、应急预案、检查记录等</p>
+      <input type="file" multiple>
+      <br>
+      <button class="submit-btn">确认上传</button>
+    </div>
+    <div class="file-list">
+      <div class="file-item">
+        <span>安全生产管理办法.pdf</span>
+        <span class="down-btn">下载</span>
+      </div>
+      <div class="file-item">
+        <span>海外项目应急预案.docx</span>
+        <span class="down-btn">下载</span>
+      </div>
+      <div class="file-item">
+        <span>安全培训课件.pptx</span>
+        <span class="down-btn">下载</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 互动留言 -->
+  <div class="title">
+    <span>互动留言</span>
+  </div>
+  <div class="form-box">
+    <div class="form-item">
+      <label>姓名/部门</label>
+      <input type="text" placeholder="请输入">
+    </div>
+    <div class="form-item">
+      <label>联系方式</label>
+      <input type="text" placeholder="电话或邮箱">
+    </div>
+    <div class="form-item">
+      <label>留言内容</label>
+      <textarea placeholder="请输入安全建议、投诉举报、问题咨询等"></textarea>
+    </div>
+    <button class="submit-btn">提交留言</button>
+  </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>版权所有 © 中西非公司安全生产委员会 | 安全生产 警钟长鸣</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
