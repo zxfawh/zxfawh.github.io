@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>安委会后台管理</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+body{background:#f5f7fa;font-family:"Microsoft YaHei"}
+.login{max-width:400px;margin:100px auto;background:#fff;padding:30px;border-radius:8px}
+.admin{display:flex}
+.sidebar{width:220px;background:#003366;color:#fff;height:100vh;padding:20px}
+.main{flex:1;padding:30px}
+.panel{background:#fff;padding:20px;border-radius:8px;margin-bottom:20px}
+.btn{background:#003366;color:#fff;padding:8px 16px;border:none;border-radius:4px;margin:5px;cursor:pointer}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{border:1px solid #ddd;padding:8px}
+</style>
+</head>
+<body>
+<div class="login" id="login">
+<h2>后台登录</h2>
+<input id="user" placeholder="账号" style="width:100%;padding:10px;margin:10px 0">
+<input id="pwd" type="password" placeholder="密码" style="width:100%;padding:10px;margin:10px 0">
+<button class="btn" onclick="login()">登录</button>
+</div>
+
+<div class="admin" id="main" style="display:none">
+<div class="sidebar">
+<h3>管理菜单</h3>
+<p onclick="show('news')">新闻管理</p>
+<p onclick="show('file')">文件管理</p>
+<p onclick="show('msg')">留言管理</p>
+<p onclick="show('apply')">报考管理</p>
+<button class="btn" onclick="logout()">退出</button>
+</div>
+<div class="main">
+<div id="news" class="panel">
+<input id="newstitle" placeholder="新闻标题" style="width:100%;padding:10px;margin:10px 0">
+<textarea id="newscontent" rows="4" placeholder="内容" style="width:100%;padding:10px;margin:10px 0"></textarea>
+<button class="btn" onclick="addNews()">发布新闻</button>
+<div id="newslist"></div>
+</div>
+
+<div id="file" class="panel" style="display:none">
+<select id="filedept" style="width:100%;padding:10px;margin:10px 0">
+<option>安全环保部</option><option>工程管理部</option><option>设备物资部</option><option>人力资源部</option><option>综合办公室</option><option>财务资金部</option><option>商务译审部</option>
+</select>
+<input type="file" id="fileupload" style="width:100%;padding:10px;margin:10px 0">
+<button class="btn" onclick="uploadFile()">上传文件</button>
+<div id="filelist"></div>
+</div>
+
+<div id="msg" class="panel" style="display:none">
+<div id="msglist"></div>
+</div>
+
+<div id="apply" class="panel" style="display:none">
+<button class="btn" onclick="exportApply()">导出报考数据</button>
+<div id="applylist"></div>
+</div>
+</div>
+</div>
+
+<script>
+const supabase = supabase.createClient("https://yehjycyxenrrbmhslrl.supabase.co","sb_publishable_EHF1Rmc4b7G5RwClOtDfLg_TUS04Hv6");
+
+function login(){
+  const u = document.getElementById("user").value;
+  const p = document.getElementById("pwd").value;
+  if(u=="admin"&&p=="123456"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("main").style.display="flex";
+    loadAll();
+  }else alert("账号密码错误");
+}
+
+function show(id){
+  document.getElementById("news").style.display="none";
+  document.getElementById("file").style.display="none";
+  document.getElementById("msg").style.display="none";
+  document.getElementById("apply").style.display="none";
+  document.getElementById(id).style.display="block";
+}
+
+async function addNews(){
+  const t = document.getElementById("newstitle").value;
+  const c = document.getElementById("newscontent").value;
+  await supabase.from("news").insert([{title:t,content:c}]);
+  alert("发布成功");loadNews();
+  document.getElementById("newstitle").value="";
+  document.getElementById("newscontent").value="";
+}
+
+async function uploadFile(){
+  const dept = document.getElementById("filedept").value;
+  const file = document.getElementById("fileupload").files[0];
+  if(!file) return alert("请先选择文件");
+  const {data} = await supabase.storage.from("upload").upload(file.name,file);
+  const url = `https://yehjycyxenrrbmhslrl.supabase.co/storage/v1/object/public/upload/${file.name}`;
+  await supabase.from("files").insert([{dept,filename:file.name,url}]);
+  alert("上传成功");loadFiles();
+}
+
+async function loadNews(){
+  const {data} = await supabase.from("news").select("*").order("id",{ascending:false});
+  let h="";data.forEach(d=>{h+=`<p>${d.title}<br>${d.content}<br><button class="btn" onclick="delNews(${d.id})">删除</button><hr></p>`});
+  document.getElementById("newslist").innerHTML=h;
+}
+
+async function loadFiles(){
+  const {data} = await supabase.from("files").select("*");
+  let h="<table class='table'><tr><th>部门</th><th>文件名</th><th>下载/删除</th></tr>";
+  data.forEach(d=>{h+=`<tr><td>${d.dept}</td><td>${d.filename}</td><td><a href='${d.url}' target='_blank'>下载</a> | <button class="btn" onclick="delFile(${d.id})">删除</button></td></tr>`});
+  h+="</table>";
+  document.getElementById("filelist").innerHTML=h;
+}
+
+async function loadMsg(){
+  const {data} = await supabase.from("messages").select("*");
+  let h="<table class='table'><tr><th>姓名/部门</th><th>电话</th><th>内容</th><th>时间</th></tr>";
+  data.forEach(d=>{h+=`<tr><td>${d.name}</td><td>${d.phone}</td><td>${d.content}</td><td>${new Date(d.create_at).toLocaleString()}</td></tr>`});
+  h+="</table>";
+  document.getElementById("msglist").innerHTML=h;
+}
+
+async function loadApply(){
+  const {data} = await supabase.from("apply").select("*");
+  let h="<table class='table'><tr><th>姓名</th><th>部门</th><th>证书类型</th><th>电话</th><th>时间</th></tr>";
+  data.forEach(d=>{h+=`<tr><td>${d.name}</td><td>${d.dept}</td><td>${d.cert_type}</td><td>${d.phone}</td><td>${new Date(d.create_at).toLocaleString()}</td></tr>`});
+  h+="</table>";
+  document.getElementById("applylist").innerHTML=h;
+}
+
+async function delNews(id){
+  if(confirm("确定删除吗？")){
+    await supabase.from("news").delete().eq("id",id);
+    loadNews();
+  }
+}
+
+async function delFile(id){
+  if(confirm("确定删除吗？")){
+    await supabase.from("files").delete().eq("id",id);
+    loadFiles();
+  }
+}
+
+function exportApply(){
+  const table = document.getElementById("applylist").querySelector("table");
+  let csv = [];
+  for(let r of table.rows){
+    let row = [];
+    for(let c of r.cells){
+      row.push(c.innerText);
+    }
+    csv.push(row.join(","));
+  }
+  let csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(csv.join("\n"));
+  let a = document.createElement("a");
+  a.href = csvContent;
+  a.download = "报考数据.csv";
+  a.click();
+}
+
+function loadAll(){loadNews();loadFiles();loadMsg();loadApply();}
+function logout(){location.reload();}
+</script>
+</body>
+</html>
